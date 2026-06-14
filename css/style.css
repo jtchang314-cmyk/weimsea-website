@@ -1409,3 +1409,23 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== 品牌定位增强 ===== */
+.brand-claim {
+    text-align: center;
+    font-size: 1.15rem;
+    color: var(--color-navy);
+    margin-top: var(--spacing-md);
+    letter-spacing: 0.02em;
+}
+
+.brand-positioning {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
