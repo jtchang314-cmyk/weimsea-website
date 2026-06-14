@@ -1411,6 +1411,15 @@ img {
 }
 
 /* ===== 品牌定位增强 ===== */
+.brand-slogan {
+    text-align: center;
+    font-size: 1.3rem;
+    color: var(--color-gold);
+    margin-top: var(--spacing-md);
+    letter-spacing: 0.08em;
+    font-family: "Noto Serif SC", "STSong", serif;
+}
+
 .brand-claim {
     text-align: center;
     font-size: 1.15rem;
