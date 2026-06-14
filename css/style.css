@@ -423,6 +423,34 @@ img {
     color: var(--color-navy);
 }
 
+/* 专家智库卡片样式 */
+.insight-card .insight-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    opacity: 1;
+    margin-bottom: var(--spacing-xs);
+}
+
+.insight-card .expert-role {
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.insight-card .expert-desc {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.insight-card .expert-bg {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
 /* 治理决定论 */
 .governance-impact {
     padding: var(--spacing-xxl) 0;
@@ -778,6 +806,16 @@ img {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.8rem;
+}
+
+.wgf-card .wgf-weight {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(26, 43, 74, 0.1);
+    color: var(--color-gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: right;
 }
 
 /* 成熟度模型 */
