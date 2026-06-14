@@ -1324,3 +1324,88 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== 使命愿景价值观 ===== */
+.mvv-section {
+    padding: var(--spacing-xxl) 0;
+    background: var(--color-navy);
+}
+
+.mvv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.mvv-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.mvv-card:hover {
+    transform: translateY(-4px);
+}
+
+.mvv-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    border: 1px solid var(--color-gold);
+    border-radius: 20px;
+    padding: 2px 14px;
+    margin-bottom: var(--spacing-md);
+}
+
+.mvv-card h3 {
+    color: var(--color-white);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.5;
+}
+
+.mvv-card > p {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.values-list {
+    text-align: left;
+    margin-top: var(--spacing-md);
+}
+
+.value-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.value-item:last-child {
+    border-bottom: none;
+}
+
+.value-item strong {
+    color: var(--color-gold);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.value-item span {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .mvv-grid {
+        grid-template-columns: 1fr;
+    }
+}
