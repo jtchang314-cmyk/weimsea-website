@@ -1277,3 +1277,50 @@ img {
         transform: rotate(90deg);
     }
 }
+
+/* ===== 品牌故事 ===== */
+.brand-story {
+    padding: var(--spacing-xxl) 0;
+    background: var(--color-cream);
+}
+
+.brand-story-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.story-block {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 2px 16px rgba(26,43,74,0.06);
+    border-top: 3px solid var(--color-gold);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-block:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(26,43,74,0.1);
+}
+
+.story-block h3 {
+    font-size: 1.8rem;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-md);
+    font-family: "Noto Serif SC", "STSong", serif;
+    letter-spacing: 0.1em;
+}
+
+.story-block p {
+    color: var(--color-text);
+    line-height: 1.9;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .brand-story-content {
+        grid-template-columns: 1fr;
+    }
+}
