@@ -2,32 +2,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50" width="300" height="50">
     <defs>
     <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#1B4F72"/>
-        <stop offset="100%" style="stop-color:#2E86C1"/>
+        <stop offset="0%" style="stop-color:#4A90D9"/>
+        <stop offset="100%" style="stop-color:#D4A843"/>
     </linearGradient>
     <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#1A2B4A"/>
-        <stop offset="50%" style="stop-color:#1A2B4A"/>
-        <stop offset="100%" style="stop-color:#2E86C1"/>
+        <stop offset="0%" style="stop-color:#FFFFFF"/>
+        <stop offset="50%" style="stop-color:#FFFFFF"/>
+        <stop offset="100%" style="stop-color:#D4A843"/>
     </linearGradient>
 </defs>
     
-    <!-- 菱形符号，缩小版 -->
+    <!-- 菱形符号，白色描边+金蓝渐变填充 -->
     <g transform="translate(25, 25)">
         <g transform="rotate(45, 0, 0)">
             <rect x="-18" y="-18" width="36" height="36" rx="5" ry="5"
-                fill="none" stroke="#1A2B4A" stroke-width="2"/>
+                fill="none" stroke="#FFFFFF" stroke-width="2"/>
             <rect x="-10" y="-7" width="14" height="10" fill="url(#blueGradient)"/>
             <rect x="0" y="-10" width="5" height="8" fill="url(#blueGradient)"/>
             <rect x="0" y="0" width="5" height="8" fill="url(#blueGradient)"/>
         </g>
     </g>
     
-    <!-- 中文：未名锡 -->
+    <!-- 中文：未名锡，白色 -->
     <text x="52" y="30" font-family="'PingFang SC', 'Microsoft YaHei', sans-serif" 
-        font-size="22px" font-weight="600" fill="#1A2B4A" letter-spacing="3px">未名锡</text>
+        font-size="22px" font-weight="600" fill="#FFFFFF" letter-spacing="3px">未名锡</text>
     
-    <!-- 英文：WeimSea -->
+    <!-- 英文：WeimSea，白金渐变 -->
     <text x="140" y="30" font-family="'Montserrat', 'Arial', sans-serif" 
         font-size="16px" font-weight="600" fill="url(#textGradient)" letter-spacing="1px">WeimSea</text>
 </svg>
