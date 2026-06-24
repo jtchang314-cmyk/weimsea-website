@@ -17,10 +17,11 @@
                 <img src="images/logo-nav.svg" alt="未名锡 WeimSea" style="height: 36px; width: auto;">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">首页</a></li>
+                <li><a href="whitepaper.html" class="active">首页</a></li>
                 <li><a href="wgf.html">五维治理</a></li>
                 <li><a href="products.html">产品体系</a></li>
-                <li><a href="whitepaper.html" class="active">白皮书</a></li>
+                <li><a href="cases.html">案例与报告</a></li>
+                <li><a href="whitepaper.html">白皮书</a></li>
                 <li><a href="about.html">关于我们</a></li>
             </ul>
             <button class="mobile-menu-btn">☰</button>
@@ -30,9 +31,10 @@
     <!-- 移动端菜单 -->
     <div class="mobile-menu">
         <ul>
-            <li><a href="index.html">首页</a></li>
+            <li><a href="whitepaper.html">首页</a></li>
             <li><a href="wgf.html">五维治理</a></li>
             <li><a href="products.html">产品体系</a></li>
+            <li><a href="cases.html">案例与报告</a></li>
             <li><a href="whitepaper.html">白皮书</a></li>
             <li><a href="about.html">关于我们</a></li>
         </ul>
@@ -57,7 +59,7 @@
                     <p class="mck-card-meta">2026年6月 · v1.0</p>
                     <p>银发经济的最大瓶颈不是需求不足，而是供给端的治理能力严重滞后。本白皮书提出用WGF™五维治理框架，为银发经济企业建立"治理基础设施"。</p>
                     <p class="mck-card-audience">适合阅读：养老机构、康养地产、银发科技、适老金融、老年教育等行业从业者</p>
-                    <a href="mailto:contact@weimsea.com?subject=申请下载：AI时代银发经济治理白皮书&body=姓名：%0D%0A公司：%0D%0A职位：%0D%0A联系方式：" class="btn btn-primary" style="margin-top: var(--spacing-md);">📥 申请下载</a>
+                    <button class="btn btn-primary" style="margin-top: var(--spacing-md);" onclick="openForm('AI时代银发经济治理白皮书')">📥 立即下载</button>
                 </div>
 
                 <div class="mck-card">
@@ -66,7 +68,7 @@
                     <p class="mck-card-meta">预计2026年Q3 · v1.0</p>
                     <p>系统阐述WGF™五维治理框架与G1-G4成熟度模型，帮助企业建立清晰的治理升级路线图。</p>
                     <p class="mck-card-audience">适合阅读：年营收3000万-10亿元的成长型企业创始人、高管</p>
-                    <a href="mailto:contact@weimsea.com?subject=预约下载：成长型企业治理能力建设指南&body=姓名：%0D%0A公司：%0D%0A职位：%0D%0A联系方式：" class="btn btn-outline" style="margin-top: var(--spacing-md);">📧 预约下载</a>
+                    <button class="btn btn-outline" style="margin-top: var(--spacing-md);" onclick="openForm('成长型企业治理能力建设指南')">📧 预约提醒</button>
                 </div>
 
                 <div class="mck-card">
@@ -75,12 +77,41 @@
                     <p class="mck-card-meta">预计2026年Q4 · v1.0</p>
                     <p>AIG™（AI Governance Framework）五级体系，帮助企业建立系统性的AI治理能力，迎接AI时代的企业治理挑战。</p>
                     <p class="mck-card-audience">适合阅读：已部署或计划部署AI系统的企业决策者</p>
-                    <a href="mailto:contact@weimsea.com?subject=预约下载：AI Governance Framework&body=姓名：%0D%0A公司：%0D%0A职位：%0D%0A联系方式：" class="btn btn-outline" style="margin-top: var(--spacing-md);">📧 预约下载</a>
+                    <button class="btn btn-outline" style="margin-top: var(--spacing-md);" onclick="openForm('AI Governance Framework')">📧 预约提醒</button>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- 留资表单模态框 -->
+    <div id="formModal" class="form-modal">
+        <div class="form-modal-content">
+            <span class="form-modal-close" onclick="closeForm()">&times;</span>
+            <h3 id="formTitle">下载白皮书</h3>
+            <p class="form-modal-sub">请填写以下信息，我们将发送文件至您的邮箱</p>
+            <form id="whitepaperForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label for="name">姓名 *</label>
+                    <input type="text" id="name" name="name" required placeholder="请输入您的姓名">
+                </div>
+                <div class="form-group">
+                    <label for="company">公司</label>
+                    <input type="text" id="company" name="company" placeholder="请输入公司名称（选填）">
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱 *</label>
+                    <input type="email" id="email" name="email" required placeholder="用于接收白皮书下载链接">
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机</label>
+                    <input type="tel" id="phone" name="phone" placeholder="方便我们与您联系（选填）">
+                </div>
+                <input type="hidden" id="targetDoc" name="targetDoc">
+                <button type="submit" class="btn btn-primary" style="width: 100%;">确认提交</button>
+            </form>
+        </div>
+    </div>
 
     <!-- 创始人引用 -->
     <section class="mck-section mck-cream">
@@ -122,5 +153,67 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+    function openForm(docName) {
+        document.getElementById('formTitle').textContent = docName;
+        document.getElementById('targetDoc').value = docName;
+        document.getElementById('formModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeForm() {
+        document.getElementById('formModal').classList.remove('active');
+        document.body.style.overflow = '';
+        // 重置表单
+        document.getElementById('whitepaperForm').reset();
+    }
+
+    function submitForm(e) {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const company = form.company.value || '未填写';
+        const phone = form.phone.value || '未填写';
+        const docName = form.targetDoc.value;
+
+        // 打开邮件客户端发送信息
+        const subject = encodeURIComponent('白皮书下载申请：' + docName);
+        const body = encodeURIComponent(
+            '姓名：' + name + '\n' +
+            '公司：' + company + '\n' +
+            '邮箱：' + email + '\n' +
+            '手机：' + phone + '\n' +
+            '申请文档：' + docName
+        );
+        
+        window.location.href = 'mailto:contact@weimsea.com?subject=' + subject + '&body=' + body;
+        
+        // 显示成功提示
+        const content = document.querySelector('.form-modal-content');
+        content.innerHTML = 
+            '<div class="form-success">' +
+            '<div class="form-success-icon">✓</div>' +
+            '<h3>提交成功</h3>' +
+            '<p>我们将尽快处理您的申请，发送白皮书至您的邮箱</p>' +
+            '<p style="color: var(--color-text-light); font-size: 0.85rem;">如需即时联系，请拨打：130-0330-2099</p>' +
+            '<button class="btn btn-primary" onclick="closeForm()" style="margin-top: var(--spacing-md);">关闭</button>' +
+            '</div>';
+    }
+
+    // 点击模态框背景关闭
+    document.getElementById('formModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeForm();
+        }
+    });
+
+    // ESC键关闭
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeForm();
+        }
+    });
+    </script>
 </body>
 </html>

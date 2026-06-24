@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>案例与报告 | 未名锡 WeimSea</title>
+    <meta name="description" content="WeimSea Frame企业治理健康体检报告示例，WGF五维治理诊断方法论展示">
+    <link rel="canonical" href="https://weimsea.com/cases.html">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 案例页面专用样式 */
+        .notice-box {
+            background: var(--color-cream);
+            border-left: 4px solid var(--color-gold);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius);
+            margin: var(--spacing-xl) auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .notice-box p {
+            color: var(--color-text);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+        
+        /* 雷达图容器 */
+        .radar-chart-container {
+            max-width: 900px;
+            margin: 0 auto var(--spacing-xl);
+        }
+        
+        .radar-chart {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto var(--spacing-lg);
+        }
+        
+        .radar-chart svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        .radar-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .radar-legend-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+        
+        .radar-legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .radar-legend-label {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+        
+        .radar-legend-value {
+            font-size: 0.85rem;
+            color: var(--color-navy);
+            font-weight: 600;
+        }
+        
+        .radar-diagnosis {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .radar-diagnosis h4 {
+            color: var(--color-navy);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+            text-align: center;
+        }
+        
+        .diagnosis-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            border-bottom: 1px solid var(--color-cream);
+        }
+        
+        .diagnosis-item:last-child {
+            border-bottom: none;
+        }
+        
+        .diagnosis-score {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-gold);
+            min-width: 45px;
+            text-align: right;
+        }
+        
+        .diagnosis-text {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .diagnosis-text strong {
+            color: var(--color-navy);
+            font-weight: 600;
+        }
+        
+        /* 行为判据卡片 */
+        .criteria-card {
+            background: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .criteria-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+        
+        .criteria-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .criteria-dimension {
+            font-size: 1.1rem;
+            color: var(--color-navy);
+            font-weight: 700;
+        }
+        
+        .criteria-score {
+            background: var(--color-navy);
+            color: var(--color-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .criteria-score.low {
+            background: #d9534f;
+        }
+        
+        .criteria-score.medium {
+            background: var(--color-gold);
+            color: var(--color-navy);
+        }
+        
+        .criteria-content {
+            color: var(--color-text);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            padding-left: var(--spacing-sm);
+            border-left: 3px solid var(--color-gold);
+        }
+        
+        /* 成熟度评定 */
+        .maturity-rating {
+            text-align: center;
+            padding: var(--spacing-xl);
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .maturity-score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-gold);
+            line-height: 1;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .maturity-label {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .maturity-level {
+            display: inline-block;
+            background: var(--color-navy);
+            color: var(--color-white);
+            padding: 0.5rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .maturity-summary {
+            font-size: 1.1rem;
+            color: var(--color-text);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* CTA区块 */
+        .cta-dark {
+            text-align: center;
+        }
+        
+        .cta-dark h3 {
+            color: var(--color-white);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .cta-dark .btn {
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo-nav.svg" alt="未名锡 WeimSea" style="height: 36px; width: auto;">
+            </a>
+            <ul class="nav-links">
+                <li><a href="cases.html" class="active">首页</a></li>
+                <li><a href="wgf.html">五维治理</a></li>
+                <li><a href="products.html">产品体系</a></li>
+                <li><a href="cases.html">案例与报告</a></li>
+                <li><a href="whitepaper.html">白皮书</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- 移动端菜单 -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="cases.html">首页</a></li>
+            <li><a href="wgf.html">五维治理</a></li>
+            <li><a href="products.html">产品体系</a></li>
+            <li><a href="cases.html">案例与报告</a></li>
+            <li><a href="whitepaper.html">白皮书</a></li>
+            <li><a href="about.html">关于我们</a></li>
+        </ul>
+    </div>
+
+    <!-- 页面标题 -->
+    <header class="page-header">
+        <div class="container">
+            <h1>案例与报告</h1>
+            <p>WeimSea Frame™ 企业治理健康体检报告示例</p>
+        </div>
+    </header>
+
+    <!-- 虚构说明 -->
+    <section class="mck-section">
+        <div class="container">
+            <div class="notice-box">
+                <p>以下为 WeimSea Frame™ 企业治理健康体检报告虚构示例，仅供展示诊断方法论，不代表任何真实企业。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 雷达图区块 -->
+    <section class="mck-section">
+        <div class="container">
+            <h2 class="mck-section-title">WGF™五维治理雷达图</h2>
+            <p class="mck-section-sub">从五个维度全面评估企业治理健康度</p>
+            
+            <div class="radar-chart-container">
+                <div class="radar-chart">
+                    <svg viewBox="0 0 400 400">
+                        <!-- 定义渐变 -->
+                        <defs>
+                            <linearGradient id="radarFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#D4A843;stop-opacity:0.3" />
+                                <stop offset="100%" style="stop-color:#1A2B4A;stop-opacity:0.3" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- 背景网格 -->
+                        <!-- 20% 圆 -->
+                        <polygon points="200,180 217,185 215,202 195,202 183,185" 
+                                 fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        <!-- 40% 圆 -->
+                        <polygon points="200,160 234,170 230,204 185,204 166,170" 
+                                 fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        <!-- 60% 圆 -->
+                        <polygon points="200,140 251,155 245,206 175,206 149,155" 
+                                 fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        <!-- 80% 圆 -->
+                        <polygon points="200,120 268,140 260,208 170,208 132,140" 
+                                 fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        <!-- 100% 圆 -->
+                        <polygon points="200,100 285,125 275,210 165,210 115,125" 
+                                 fill="none" stroke="#e0e0e0" stroke-width="1"/>
+                        
+                        <!-- 轴线 -->
+                        <line x1="200" y1="155" x2="285" y2="125" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="200" y1="155" x2="275" y2="210" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="200" y1="155" x2="165" y2="210" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="200" y1="155" x2="115" y2="125" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="200" y1="155" x2="200" y2="100" stroke="#e0e0e0" stroke-width="1"/>
+                        
+                        <!-- 数据多边形 -->
+                        <!-- W1=72: 200-72*0.55=160.4, y=155-72*0.3=133.4 -->
+                        <!-- W2=85: 200+85*0.85=272.25, y=155+85*0.65=210.25 -->
+                        <!-- W3=58: 200+58*0.75=243.5, y=155+58*0.55=186.9 -->
+                        <!-- W4=45: 200-45*0.35=184.25, y=155+45*0.55=179.75 -->
+                        <!-- W5=76: 200-76*0.85=135.4, y=155-76*0.3=132.2 -->
+                        <polygon points="160.4,133.4 272.25,210.25 243.5,186.9 184.25,179.75 135.4,132.2" 
+                                 fill="url(#radarFill)" 
+                                 stroke="#1A2B4A" 
+                                 stroke-width="2"/>
+                        
+                        <!-- 数据点 -->
+                        <circle cx="160.4" cy="133.4" r="5" fill="#D4A843"/>
+                        <circle cx="272.25" cy="210.25" r="5" fill="#D4A843"/>
+                        <circle cx="243.5" cy="186.9" r="5" fill="#D4A843"/>
+                        <circle cx="184.25" cy="179.75" r="5" fill="#D4A843"/>
+                        <circle cx="135.4" cy="132.2" r="5" fill="#D4A843"/>
+                        
+                        <!-- 标签 -->
+                        <text x="200" y="90" text-anchor="middle" font-size="14" fill="#1A2B4A" font-weight="600">W1 战略治理</text>
+                        <text x="295" y="120" text-anchor="start" font-size="14" fill="#1A2B4A" font-weight="600">W2 组织治理</text>
+                        <text x="285" y="220" text-anchor="start" font-size="14" fill="#1A2B4A" font-weight="600">W3 财务治理</text>
+                        <text x="110" y="220" text-anchor="end" font-size="14" fill="#1A2B4A" font-weight="600">W4 AI治理</text>
+                        <text x="100" y="120" text-anchor="end" font-size="14" fill="#1A2B4A" font-weight="600">W5 资本治理</text>
+                    </svg>
+                </div>
+                
+                <!-- 图例 -->
+                <div class="radar-legend">
+                    <div class="radar-legend-item">
+                        <div class="radar-legend-dot" style="background: #D4A843;"></div>
+                        <span class="radar-legend-label">W1 战略治理</span>
+                        <span class="radar-legend-value">72</span>
+                    </div>
+                    <div class="radar-legend-item">
+                        <div class="radar-legend-dot" style="background: #D4A843;"></div>
+                        <span class="radar-legend-label">W2 组织治理</span>
+                        <span class="radar-legend-value">85</span>
+                    </div>
+                    <div class="radar-legend-item">
+                        <div class="radar-legend-dot" style="background: #D4A843;"></div>
+                        <span class="radar-legend-label">W3 财务治理</span>
+                        <span class="radar-legend-value">58</span>
+                    </div>
+                    <div class="radar-legend-item">
+                        <div class="radar-legend-dot" style="background: #D4A843;"></div>
+                        <span class="radar-legend-label">W4 AI治理</span>
+                        <span class="radar-legend-value">45</span>
+                    </div>
+                    <div class="radar-legend-item">
+                        <div class="radar-legend-dot" style="background: #D4A843;"></div>
+                        <span class="radar-legend-label">W5 资本治理</span>
+                        <span class="radar-legend-value">76</span>
+                    </div>
+                </div>
+                
+                <!-- 诊断 -->
+                <div class="radar-diagnosis">
+                    <h4>维度诊断</h4>
+                    <div class="diagnosis-item">
+                        <span class="diagnosis-score">72</span>
+                        <span class="diagnosis-text"><strong>W1 战略治理：</strong>战略方向明确，但AI时代转型路径尚不清晰</span>
+                    </div>
+                    <div class="diagnosis-item">
+                        <span class="diagnosis-score">85</span>
+                        <span class="diagnosis-text"><strong>W2 组织治理：</strong>组织架构完善，团队协同能力较强</span>
+                    </div>
+                    <div class="diagnosis-item">
+                        <span class="diagnosis-score">58</span>
+                        <span class="diagnosis-text"><strong>W3 财务治理：</strong>财务体系存在明显短板，数据化程度不足</span>
+                    </div>
+                    <div class="diagnosis-item">
+                        <span class="diagnosis-score">45</span>
+                        <span class="diagnosis-text"><strong>W4 AI治理：</strong>AI治理能力薄弱，未建立系统化规范</span>
+                    </div>
+                    <div class="diagnosis-item">
+                        <span class="diagnosis-score">76</span>
+                        <span class="diagnosis-text"><strong>W5 资本治理：</strong>资本结构基本合理，需强化治理层权责界定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关键指标行为判据 -->
+    <section class="mck-section mck-cream">
+        <div class="container">
+            <h2 class="mck-section-title">关键指标行为判据节选</h2>
+            <p class="mck-section-sub">通过可观测行为量化评估治理能力</p>
+            
+            <div class="mck-cards three-col">
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <span class="criteria-dimension">W3 财务治理</span>
+                        <span class="criteria-score low">58分</span>
+                    </div>
+                    <div class="criteria-content">
+                        企业财务数据与业务数据未实现打通，经营决策依赖经验而非数据驱动
+                    </div>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <span class="criteria-dimension">W4 AI治理</span>
+                        <span class="criteria-score low">45分</span>
+                    </div>
+                    <div class="criteria-content">
+                        未建立AI使用治理规范，AI工具引入缺乏风险评估与合规审查流程
+                    </div>
+                </div>
+                
+                <div class="criteria-card">
+                    <div class="criteria-header">
+                        <span class="criteria-dimension">W5 资本治理</span>
+                        <span class="criteria-score medium">76分</span>
+                    </div>
+                    <div class="criteria-content">
+                        股权结构清晰但治理层与经营层权责边界模糊，影响资本市场信任度
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 治理成熟度评定 -->
+    <section class="mck-section">
+        <div class="container">
+            <h2 class="mck-section-title">治理成熟度评定</h2>
+            <p class="mck-section-sub">基于WGF五维加权评分的综合评级</p>
+            
+            <div class="maturity-rating">
+                <div class="maturity-score">67.2</div>
+                <div class="maturity-label">综合评分</div>
+                <div class="maturity-level">G2 标准化</div>
+                <p class="maturity-summary">该企业已建立基础治理框架，但财务数据治理和AI治理能力仍是显著短板</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="mck-section mck-dark cta-dark">
+        <div class="container">
+            <h3>获取您企业的完整诊断报告</h3>
+            <a href="about.html#contact" class="btn btn-primary" style="background: var(--color-gold); color: var(--color-navy);">加微信约见创始人</a>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo"><img src="images/logo-nav.svg" alt="未名锡 WeimSea" style="height: 32px; width: auto;"></span>
+                    <p>让企业在成长中少走弯路</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>联系我们</h4>
+                    <p>📱 130-0330-2099（微信同号）</p>
+                    <p>📧 contact@weimsea.com</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="wgf.html">五维治理模型</a></li>
+                        <li><a href="products.html">产品体系</a></li>
+                        <li><a href="cases.html">案例与报告</a></li>
+                        <li><a href="whitepaper.html">白皮书下载</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 无锡未名锡管理咨询有限公司</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

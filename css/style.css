@@ -2008,3 +2008,389 @@ img {
         grid-template-columns: 1fr;
     }
 }
+
+/* 产品定价标签 */
+.product-price-tag {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xs);
+}
+
+.product-price-tag span {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+}
+
+
+/* 白皮书留资表单模态框 */
+.form-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 43, 74, 0.85);
+    backdrop-filter: blur(4px);
+}
+
+.form-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-modal-content {
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    max-width: 420px;
+    width: 90%;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+}
+
+.form-modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.form-modal-close:hover {
+    color: var(--color-navy);
+}
+
+.form-modal-content h3 {
+    color: var(--color-navy);
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.form-modal-sub {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-modal .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-modal .form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.form-modal .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-modal .form-group input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+    box-shadow: 0 0 0 3px rgba(212, 168, 67, 0.2);
+}
+
+.form-success {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.form-success-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.form-success h3 {
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-success p {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+
+/* ============================================
+   创始人板块 — 判断力展示风格
+   ============================================ */
+
+/* 创始人卡片增强 */
+.founder-detail-card.founder-judgments {
+    padding: var(--spacing-xl);
+}
+
+/* 模块1：核心身份 */
+.founder-identity {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(26, 43, 74, 0.1);
+}
+
+.founder-identity h2 {
+    font-size: 2rem;
+    margin: var(--spacing-sm) 0 var(--spacing-xs);
+}
+
+.founder-identity .founder-title {
+    color: var(--color-gold);
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.founder-identity .founder-slogan {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 模块2：核心判断力 */
+.founder-judgments-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(26, 43, 74, 0.1);
+}
+
+.judgments-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700;
+}
+
+.judgments-intro {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+    font-style: italic;
+}
+
+.judgment-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.judgment-item {
+    background: var(--color-cream);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    border-left: 3px solid var(--color-gold);
+    transition: var(--transition);
+}
+
+.judgment-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.judgment-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.judgment-scenario {
+    color: var(--color-text);
+    flex-basis: 100%;
+}
+
+.judgment-arrow {
+    color: var(--color-gold);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.judgment-decision {
+    color: var(--color-navy);
+    font-weight: 600;
+    flex-basis: 100%;
+    padding-left: 1.5rem;
+}
+
+.judgment-result {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    flex-basis: 100%;
+    padding-left: 1.5rem;
+}
+
+.judgment-result::before {
+    content: '→ ';
+    color: var(--color-gold);
+}
+
+/* 模块3：专业积累 */
+.founder-credentials-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(26, 43, 74, 0.1);
+}
+
+.credentials-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.credential-block {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background: var(--color-cream);
+    border-radius: var(--border-radius);
+}
+
+.credential-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.credential-content h4 {
+    font-size: 0.95rem;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.credential-content p {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.credential-content strong {
+    color: var(--color-navy);
+}
+
+/* 模块4：方法论 */
+.founder-methodology-section {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(26, 43, 74, 0.1);
+}
+
+.methodology-title {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--color-navy);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.methodology-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.methodology-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-cream);
+    border-radius: var(--border-radius);
+}
+
+.methodology-badge {
+    background: var(--color-gold);
+    color: var(--color-navy);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.methodology-text {
+    color: var(--color-text);
+    font-size: 0.95rem;
+}
+
+/* 模块5：收尾语 */
+.founder-closing {
+    text-align: center;
+    padding-top: var(--spacing-md);
+}
+
+.founder-closing p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-style: italic;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* 响应式适配 */
+@media (max-width: 768px) {
+    .founder-detail-card.founder-judgments {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .credentials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .judgment-flow {
+        font-size: 0.9rem;
+    }
+    
+    .founder-identity h2 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .judgment-item {
+        padding: var(--spacing-sm);
+    }
+    
+    .credential-block {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .methodology-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-xs);
+    }
+}
